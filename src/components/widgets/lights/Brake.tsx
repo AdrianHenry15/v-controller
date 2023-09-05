@@ -1,11 +1,17 @@
 import React from "react"
 import WidgetWrapper from "../WidgetWrapper"
-import { BsSignStop } from "react-icons/bs"
+import { BsSignStop, BsSignStopFill } from "react-icons/bs"
+import { useWidgetStore } from "../../../hooks/useWidgetStore"
 
 const Brakes = () => {
+  const { brakeLightsOn, setBrakeLights } = useWidgetStore()
   return (
-    <WidgetWrapper onClick={() => {}} text="Brakes">
-      <BsSignStop size="20px" />
+    <WidgetWrapper onClick={() => setBrakeLights()} text="Brakes">
+      {brakeLightsOn ? (
+        <BsSignStopFill size="20px" />
+      ) : (
+        <BsSignStop size="20px" />
+      )}
     </WidgetWrapper>
   )
 }

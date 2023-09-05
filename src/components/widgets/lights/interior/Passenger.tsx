@@ -1,11 +1,17 @@
 import React from "react"
 import WidgetWrapper from "../../WidgetWrapper"
-import { BsLightbulb } from "react-icons/bs"
+import { BsLightbulb, BsLightbulbFill } from "react-icons/bs"
+import { useWidgetStore } from "../../../../hooks/useWidgetStore"
 
 const PassengerLight = () => {
+  const { passengerLightOn, setPassengerLights } = useWidgetStore()
   return (
-    <WidgetWrapper onClick={() => {}} text="Passenger">
-      <BsLightbulb size="20px" />
+    <WidgetWrapper onClick={() => setPassengerLights()} text="Passenger">
+      {passengerLightOn ? (
+        <BsLightbulbFill size="20px" />
+      ) : (
+        <BsLightbulb size="20px" />
+      )}
     </WidgetWrapper>
   )
 }

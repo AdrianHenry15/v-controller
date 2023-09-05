@@ -1,11 +1,17 @@
 import React from "react"
 import WidgetWrapper from "../WidgetWrapper"
-import { BsSignTurnLeft } from "react-icons/bs"
+import { BsSignTurnLeft, BsSignTurnLeftFill } from "react-icons/bs"
+import { useWidgetStore } from "../../../hooks/useWidgetStore"
 
 const LeftSignal = () => {
+  const { leftSignalOn, setLeftSignal } = useWidgetStore()
   return (
-    <WidgetWrapper onClick={() => {}} text="LeftSignal">
-      <BsSignTurnLeft size="20px" />
+    <WidgetWrapper onClick={() => setLeftSignal()} text="LeftSignal">
+      {leftSignalOn ? (
+        <BsSignTurnLeftFill size="20px" />
+      ) : (
+        <BsSignTurnLeft size="20px" />
+      )}
     </WidgetWrapper>
   )
 }

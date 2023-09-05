@@ -7,7 +7,7 @@ import { useWidgetStore } from "../../../hooks/useWidgetStore"
 const Hood = () => {
   const { hoodOpen, setHoodOpen } = useWidgetStore()
   return (
-    <WidgetWrapper text="Hood">
+    <WidgetWrapper onClick={() => setHoodOpen()} text="Hood">
       {hoodOpen ? <AiFillUnlock size="20px" /> : <AiFillLock size="20px" />}
     </WidgetWrapper>
   )

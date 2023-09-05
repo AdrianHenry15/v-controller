@@ -1,15 +1,17 @@
 import React from "react"
 import WidgetWrapper from "../WidgetWrapper"
-import { PiHeadlightsBold } from "react-icons/pi"
+import { PiHeadlightsBold, PiHeadlightsFill } from "react-icons/pi"
+import { useWidgetStore } from "../../../hooks/useWidgetStore"
 
 const HeadLights = () => {
-  const handleClick = () => {
-    console.log("Clicked")
-  }
+  const { headLightsOn, setHeadLights } = useWidgetStore()
   return (
-    <WidgetWrapper onClick={() => handleClick()} text="Headlights">
-      {" "}
-      <PiHeadlightsBold size="20px" />
+    <WidgetWrapper onClick={() => setHeadLights()} text="Headlights">
+      {headLightsOn ? (
+        <PiHeadlightsFill size="20px" />
+      ) : (
+        <PiHeadlightsBold size="20px" />
+      )}
     </WidgetWrapper>
   )
 }

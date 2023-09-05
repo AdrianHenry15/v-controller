@@ -1,19 +1,19 @@
 import React from "react"
 import WidgetWrapper from "./WidgetWrapper"
-import { AiOutlineSound } from "react-icons/ai"
+import { AiOutlineSound, AiFillSound } from "react-icons/ai"
+import { useWidgetStore } from "../../hooks/useWidgetStore"
 
 const Honk = () => {
-  const handleClick = () => {
-    console.log("Click")
-    alert("Click")
-  }
+  const { honk, setHonk } = useWidgetStore()
   return (
     <WidgetWrapper
-      onClick={() => {
-        handleClick
-      }}
-      text="Horn">
-      <AiOutlineSound size="20px" />
+      onMouseUp={() => setHonk(true)}
+      onMouseDown={() => setHonk(false)}
+      onTouchStart={() => setHonk(true)}
+      onTouchEnd={() => setHonk(false)}
+      text="Honk">
+      {!honk && <AiOutlineSound size="20px" />}
+      {honk && <AiFillSound size="20px" />}
     </WidgetWrapper>
   )
 }

@@ -1,5 +1,3 @@
-"use client"
-
 import { create } from "zustand"
 
 export enum ClimateTemp {
@@ -20,54 +18,128 @@ export enum ClimateTemp {
 
 interface WidgetStore {
   // STATE
+  // EXTERIOR LIGHTS
   headLightsOn: boolean
-  rearLightsOn: boolean
-  honk: boolean
-  climate: ClimateTemp
-  doorsOpen: boolean
+  brakeLightsOn: boolean
+  leftSignalOn: boolean
+  rightSignalOn: boolean
+  // INTERIOR LIGHTS
+  driverLightOn: boolean
+  passengerLightOn: boolean
+  leftLightOn: boolean
+  rightLightOn: boolean
+  // DOORS
+  doorsLocked: boolean
   trunkOpen: boolean
   hoodOpen: boolean
+  // WINDOWS
+  allWindowsUp: boolean
+  allWindowsDown: boolean
+  driverWindowDown: boolean
+  driverWindowUp: boolean
+  passengerWindowDown: boolean
+  passengerWindowUp: boolean
+  backLeftWindowDown: boolean
+  backLeftWindowUp: boolean
+  backRightWindowDown: boolean
+  backRightWindowUp: boolean
+  // MISC
   carStarted: boolean
-  windowDown: boolean
-  windowUp: boolean
+  honk: boolean
+  climate: boolean
 
   // ACTIONS
-  setClimate: (temp: ClimateTemp) => void
+  // EXTERIOR LIGHTS
   setHeadLights: () => void
-  setRearLights: () => void
-  setHonk: () => void
-  setDoorsOpen: () => void
+  setBrakeLights: () => void
+  setLeftSignal: () => void
+  setRightSignal: () => void
+  // INTERIOR LIGHTS
+  setDriverLights: () => void
+  setPassengerLights: () => void
+  setBackLeftLights: () => void
+  setBackRightLights: () => void
+  // DOORS
+  setDoorLocks: () => void
   setTrunkOpen: () => void
   setHoodOpen: () => void
+  // WINDOWS
+  setAllWindowsUp: (open: boolean) => void
+  setAllWindowsDown: (open: boolean) => void
+  setDriverWindowDown: (open: boolean) => void
+  setDriverWindowUp: (open: boolean) => void
+  setPassengerWindowDown: (open: boolean) => void
+  setPassengerWindowUp: (open: boolean) => void
+  setBackLeftWindowDown: (open: boolean) => void
+  setBackLeftWindowUp: (open: boolean) => void
+  setBackRightWindowDown: (open: boolean) => void
+  setBackRightWindowUp: (open: boolean) => void
+  // MISC
+  setHonk: (active: boolean) => void
+  setClimate: () => void
   setCarStart: () => void
-  setWindowDown: () => void
-  setWindowUp: () => void
 }
 
 export const useWidgetStore = create<WidgetStore>((set, get) => ({
   // STATE
+  // EXTERIOR LIGHTS
   headLightsOn: false,
-  rearLightsOn: false,
-  honk: false,
-  climate: ClimateTemp.LVL11,
-  doorsOpen: false,
+  brakeLightsOn: false,
+  leftSignalOn: false,
+  rightSignalOn: false,
+  // INTERIOR LIGHTS
+  driverLightOn: false,
+  passengerLightOn: false,
+  leftLightOn: false,
+  rightLightOn: false,
+  // DOORS
+  doorsLocked: false,
   trunkOpen: false,
   hoodOpen: false,
+  // WINDOWS
+  allWindowsUp: false,
+  allWindowsDown: false,
+  driverWindowDown: false,
+  driverWindowUp: false,
+  passengerWindowDown: false,
+  passengerWindowUp: false,
+  backLeftWindowDown: false,
+  backLeftWindowUp: false,
+  backRightWindowDown: false,
+  backRightWindowUp: false,
+  // MISC
   carStarted: false,
-  windowDown: false,
-  windowUp: false,
+  climate: false,
+  honk: false,
 
   // ACTIONS
-  setClimate: (temp: ClimateTemp) => set({ climate: temp }),
+  // EXTERIOR LIGHTS
   setHeadLights: () => set({ headLightsOn: !get().headLightsOn }),
-  setRearLights: () => set({ rearLightsOn: !get().rearLightsOn }),
-  setHonk: () => set({ honk: !get().honk }),
-  setDoorsOpen: () => set({ doorsOpen: !get().doorsOpen }),
-  setTrunkOpen: () => {
-    console.log(get().trunkOpen), set({ trunkOpen: !get().trunkOpen })
-  },
+  setBrakeLights: () => set({ brakeLightsOn: !get().brakeLightsOn }),
+  setLeftSignal: () => set({ leftSignalOn: !get().leftSignalOn }),
+  setRightSignal: () => set({ rightSignalOn: !get().rightSignalOn }),
+  // INTERIOR LIGHTS
+  setDriverLights: () => set({ driverLightOn: !get().driverLightOn }),
+  setPassengerLights: () => set({ passengerLightOn: !get().passengerLightOn }),
+  setBackLeftLights: () => set({ leftLightOn: !get().leftLightOn }),
+  setBackRightLights: () => set({ rightLightOn: !get().rightLightOn }),
+  // DOORS
   setHoodOpen: () => set({ hoodOpen: !get().hoodOpen }),
+  setDoorLocks: () => set({ doorsLocked: !get().doorsLocked }),
+  setTrunkOpen: () => set({ trunkOpen: !get().trunkOpen }),
+  // WINDOWS
+  setAllWindowsUp: (open: boolean) => set({ allWindowsUp: open }),
+  setAllWindowsDown: (open: boolean) => set({ allWindowsDown: open }),
+  setDriverWindowDown: (open: boolean) => set({ driverWindowDown: open }),
+  setDriverWindowUp: (open: boolean) => set({ driverWindowUp: open }),
+  setPassengerWindowDown: (open: boolean) => set({ passengerWindowDown: open }),
+  setPassengerWindowUp: (open: boolean) => set({ passengerWindowUp: open }),
+  setBackLeftWindowDown: (open: boolean) => set({ backLeftWindowDown: open }),
+  setBackLeftWindowUp: (open: boolean) => set({ backLeftWindowUp: open }),
+  setBackRightWindowDown: (open: boolean) => set({ backRightWindowDown: open }),
+  setBackRightWindowUp: (open: boolean) => set({ backRightWindowUp: open }),
+  // MISC
+  setHonk: (active: boolean) => set({ honk: !get().honk }),
+  setClimate: () => set({ climate: !get().climate }),
   setCarStart: () => set({ carStarted: !get().carStarted }),
-  setWindowDown: () => set({ windowDown: !get().windowDown }),
-  setWindowUp: () => set({ windowUp: !get().windowUp }),
 }))
