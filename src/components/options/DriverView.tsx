@@ -6,7 +6,7 @@ const DriverView = () => {
   return (
     <OptionsWrapper title="Driver View" subtext={`Interior: ${""}`}>
       <div className="pr-2">
-        <PiSteeringWheelBold size="25px" />
+        <PiSteeringWheelBold size="20px" />
       </div>
     </OptionsWrapper>
   )

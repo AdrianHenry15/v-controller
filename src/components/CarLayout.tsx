@@ -9,17 +9,14 @@ import OptionsContainer from "./options/OptionsContainer"
 import DriverView from "./car-display/DriverView"
 
 const CarLayout = () => {
-  const handleCLick = () => {
-    console.log("Click")
-  }
   return (
     <div>
       <Container>
         <div className="backSplash">
           <Header />
           {/* <GasDisplay /> */}
-          {/* <CarDisplay /> */}
-          <DriverView />
+          <CarDisplay />
+          {/* <DriverView /> */}
           <WidgetContainer />
         </div>
         <OptionsContainer />

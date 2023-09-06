@@ -1,7 +1,7 @@
 import React from "react"
-import Controls from "./Controls"
 import Owner from "./Owner"
 import DriverView from "./DriverView"
+import Climate from "./Climate"
 
 const OptionsContainer = () => {
   return (
@@ -9,7 +9,7 @@ const OptionsContainer = () => {
       {" "}
       <div className="flex flex-col">
         <DriverView />
-        <Controls />
+        <Climate />
         <Owner />
       </div>
     </div>
