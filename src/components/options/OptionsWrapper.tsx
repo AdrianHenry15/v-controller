@@ -5,12 +5,14 @@ interface OptionsWrapperProps {
   children: React.ReactNode
   title: string
   subtext?: string
-  onClick?: (mainOwner: boolean) => void
+  onClick?: () => void
 }
 
 const OptionsWrapper = (props: OptionsWrapperProps) => {
   return (
-    <div className="py-4 flex items-center">
+    <div
+      onClick={props.onClick}
+      className="py-4 flex items-center cursor-pointer">
       <div className="w-full">
         {/* ICON AND TITLE */}
         <div className="flex items-center justify-between">

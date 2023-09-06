@@ -23,6 +23,7 @@ interface WidgetStore {
   brakeLightsOn: boolean
   leftSignalOn: boolean
   rightSignalOn: boolean
+  flashLights: boolean
   // INTERIOR LIGHTS
   driverLightOn: boolean
   passengerLightOn: boolean
@@ -54,6 +55,7 @@ interface WidgetStore {
   setBrakeLights: () => void
   setLeftSignal: () => void
   setRightSignal: () => void
+  setFlashLights: (active: boolean) => void
   // INTERIOR LIGHTS
   setDriverLights: () => void
   setPassengerLights: () => void
@@ -87,6 +89,7 @@ export const useWidgetStore = create<WidgetStore>((set, get) => ({
   brakeLightsOn: false,
   leftSignalOn: false,
   rightSignalOn: false,
+  flashLights: false,
   // INTERIOR LIGHTS
   driverLightOn: false,
   passengerLightOn: false,
@@ -118,6 +121,7 @@ export const useWidgetStore = create<WidgetStore>((set, get) => ({
   setBrakeLights: () => set({ brakeLightsOn: !get().brakeLightsOn }),
   setLeftSignal: () => set({ leftSignalOn: !get().leftSignalOn }),
   setRightSignal: () => set({ rightSignalOn: !get().rightSignalOn }),
+  setFlashLights: (active: boolean) => set({ flashLights: active }),
   // INTERIOR LIGHTS
   setDriverLights: () => set({ driverLightOn: !get().driverLightOn }),
   setPassengerLights: () => set({ passengerLightOn: !get().passengerLightOn }),

@@ -3,11 +3,11 @@ import CarLayout from "./components/CarLayout"
 
 const App = () => {
   return (
-    <main className="flex flex-col text-white items-center">
+    <section className="flex flex-col text-white items-center justify-center">
       <div className="mainWrapper">
         <CarLayout />
       </div>
-    </main>
+    </section>
   )
 }
 

@@ -21,6 +21,7 @@ import DriverWindowDown from "./windows/down/DriverDown"
 import PassengerWindowDown from "./windows/down/PassengerDown"
 import BackLeftWindowDown from "./windows/down/BackLeftDown"
 import BackRightWindowDown from "./windows/down/BackRightDown"
+import FlashLights from "./lights/Flash"
 
 const WidgetContainer = () => {
   return (
@@ -29,39 +30,40 @@ const WidgetContainer = () => {
         {/* EXTERIOR LIGHTS */}
         <div className="flex">
           <HeadLights />
+          <FlashLights />
           <BrakeLights />
           <LeftSignal />
-          <RightSignal />
         </div>
         {/* INTERIOR LIGHTS */}
         <div className="flex">
+          <RightSignal />
           <DriverLight />
           <PassengerLight />
           <BackLeftLight />
-          <BackRightLight />
         </div>
         {/* DOORS */}
         <div className="flex">
+          <BackRightLight />
           <Honk />
           <DoorLocks />
           <Trunk />
-          <Hood />
         </div>
         {/* WINDOWS */}
         <div className="flex">
+          <Hood />
           <DriverWindow />
           <PassengerWindow />
           <BackLeftWindow />
-          <BackRightWindow />
         </div>
         {/* WINDOWS */}
         <div className="flex">
+          <BackRightWindow />
           <AllWindows />
           <AllWindowsDown />
           <DriverWindowDown />
-          <PassengerWindowDown />
         </div>
         <div className="flex">
+          <PassengerWindowDown />
           <BackLeftWindowDown />
           <BackRightWindowDown />
         </div>

@@ -1,14 +1,14 @@
 import React from "react"
-import Climate from "./Climate"
 import Controls from "./Controls"
 import Owner from "./Owner"
+import DriverView from "./DriverView"
 
 const OptionsContainer = () => {
   return (
     <div>
       {" "}
       <div className="flex flex-col">
-        <Climate />
+        <DriverView />
         <Controls />
         <Owner />
       </div>

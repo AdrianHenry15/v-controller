@@ -26,7 +26,18 @@ const WidgetWrapper: React.FC<WidgetWrapperProps> = ({
       onMouseUp={onMouseUp}
       onTouchStart={onTouchStart}
       onTouchCancel={onTouchEnd}
-      className="flex flex-col items-center justify-center p-4 active:bg-zinc-700 rounded-full h-20 w-20 cursor-pointer">
+      className="
+        flex 
+        flex-col 
+        items-center 
+        justify-center 
+        p-4 
+        active:bg-zinc-700 
+        rounded-full 
+        h-20 
+        w-20 
+        cursor-pointer
+        ">
       {children}
       <span style={{ fontSize: "10px" }} className="pt-2">
         {text}

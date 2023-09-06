@@ -6,6 +6,7 @@ import WidgetContainer from "./widgets/WidgetContainer"
 import Header from "./header/Header"
 import CarDisplay from "./car-display/CarDisplay"
 import OptionsContainer from "./options/OptionsContainer"
+import DriverView from "./car-display/DriverView"
 
 const CarLayout = () => {
   const handleCLick = () => {
@@ -17,16 +18,12 @@ const CarLayout = () => {
         <div className="backSplash">
           <Header />
           {/* <GasDisplay /> */}
-          <CarDisplay />
+          {/* <CarDisplay /> */}
+          <DriverView />
           <WidgetContainer />
         </div>
         <OptionsContainer />
       </Container>
-      <div
-        className="pointer-events-auto cursor-pointer"
-        onClick={() => handleCLick()}>
-        Click Me
-      </div>
     </div>
   )
 }
