@@ -79,16 +79,21 @@ const WebgiViewer = forwardRef((props, ref) => {
     const setupViewer = useCallback(async () => {
         // Initialize the viewer
         const viewer = new ViewerApp({
-            canvas: canvasRef.current
+            canvas: canvasRef.current,
+            useGBufferDepth: true
         })
+
+        const options = {
+            autoScale: true, // Scales the object before adding to the scene.
+            autoScaleRadius: 7, // Scales the object bounding box to 2 World Units, if autoScale is true
+            pseudoCenter: true, // centers the object to origin on load
+            // check docs for other options (if required) 
+        }
 
         // setViewerRef(viewer)
 
         // Add some plugins
         const manager = await viewer.addPlugin(AssetManagerPlugin)
-
-        // Add a popup(in HTML) with download progress when any asset is downloading.
-        await viewer.addPlugin(AssetManagerBasicPopupPlugin)
 
         // this could access position and target
         // const camera = viewer.scene.activeCamera;
@@ -105,7 +110,7 @@ const WebgiViewer = forwardRef((props, ref) => {
         await viewer.addPlugin(new ProgressivePlugin(32))
         // might disable transparency
         // await viewer.addPlugin(new TonemapPlugin(!viewer.useRgbm))
-        await viewer.addPlugin(new TonemapPlugin(true))
+        // await viewer.addPlugin(new TonemapPlugin(true))
         await viewer.addPlugin(GammaCorrectionPlugin)
         await viewer.addPlugin(SSRPlugin)
         await viewer.addPlugin(SSAOPlugin)
@@ -128,20 +133,23 @@ const WebgiViewer = forwardRef((props, ref) => {
         viewer.renderer.refreshPipeline()
 
         // Import and add a GLB file.
-        await manager.addFromPath("bmw_m3_e30_1986.glb")
+        await Promise.all([
+            viewer.scene.setEnvironment(await manager.importer.importSingle({ path: 'https://demo-assets.pixotronics.com/pixo/hdr/p360' })),
+            manager.addFromPath("bmw_m3_e30_1986.glb", options)
+        ])
 
         // manipulating background of glb file which is 3D model
-        viewer.getPlugin(TonemapPlugin).uiConfig.clipBackground = true
+        viewer.getPlugin(TonemapPlugin).uiConfig.type = true
 
         // This disables the controls to rotate the 3D model
         // Remember to keep this on for the car application
         viewer.scene.activeCamera.setCameraOptions({ controlsEnabled: true });
 
         // makes sure the position of page is on the top
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
 
         // only want to update this on certain positions
-        let needsUpdate = true
+        let needsUpdate = false
 
         // camera and viewer needs to be updated
         const onUpdate = () => {
@@ -150,12 +158,12 @@ const WebgiViewer = forwardRef((props, ref) => {
         }
 
         // this event listener updates position of camera
-        viewer.addEventListener("preFrame", () => {
-            if (needsUpdate) {
-                // camera.positionTargetUpdated(true)
-                needsUpdate = false;
-            }
-        })
+        // viewer.addEventListener("preFrame", () => {
+        //     if (needsUpdate) {
+        //         // camera.positionTargetUpdated(true)
+        //         needsUpdate = false;
+        //     }
+        // })
 
         // memoizedclickAnimation(position, target, onUpdate)
     }, [])

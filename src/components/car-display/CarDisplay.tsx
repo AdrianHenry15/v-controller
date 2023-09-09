@@ -19,7 +19,7 @@ const CarDisplay = () => {
       <img
         src={AerialCar}
         alt="aerial-car"
-        width={isMobile ? "150px" : "300px"}
+        // width={isMobile ? "150px" : "300px"}
         className="w-36 md:w-72 "
       />
       {/* <WebgiViewer /> */}
