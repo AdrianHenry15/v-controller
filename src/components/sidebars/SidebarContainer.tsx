@@ -3,6 +3,7 @@ import { BsFillSquareFill } from "react-icons/bs"
 
 interface SidebarContainerProps {
   text: string
+  icon: React.ReactNode
 }
 
 const SidebarContainer = (props: SidebarContainerProps) => {
@@ -21,7 +22,7 @@ const SidebarContainer = (props: SidebarContainerProps) => {
   return (
     <div className="sidebar-container">
       <div className="sidebar-item">
-        <BsFillSquareFill size={isMobile ? "15px" : "30px"} />
+        {props.icon}
         <span style={{ paddingLeft: "15px" }}>{props.text}</span>
       </div>
     </div>

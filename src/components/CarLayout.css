@@ -2,7 +2,6 @@
   display: flex;
   height: 100%;
   width: 100%;
-  overflow: scroll;
 }
 
 /* =============================== MEDIA QUERIES =============================== */
@@ -10,7 +9,7 @@
   .car-layout {
     flex-direction: column;
     justify-content: center;
-    overflow: scroll;
+    overflow-y: scroll;
     padding-top: 10px;
     padding-bottom: 10px;
   }

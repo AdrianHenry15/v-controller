@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import CarDisplay from "./car-display/CarDisplay"
-import LeftBar from "./sidebar/Left"
-import RightBar from "./sidebar/Right"
+import LeftBar from "./sidebars/Left"
+import RightBar from "./sidebars/Right"
 import "./CarLayout.css"
 
 const CarLayout = () => {
@@ -9,7 +9,7 @@ const CarLayout = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
+      setIsMobile(window.innerWidth < 768 ? true : false)
     }
 
     window.addEventListener("resize", handleResize)
