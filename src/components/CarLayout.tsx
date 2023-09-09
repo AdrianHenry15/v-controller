@@ -1,27 +1,40 @@
-"use client"
-
-import React from "react"
-import Container from "./Container"
-import WidgetContainer from "./widgets/WidgetContainer"
-
-import OptionsContainer from "./options/OptionsContainer"
+import React, { useState, useEffect } from "react"
 import CarDisplay from "./car-display/CarDisplay"
+import LeftBar from "./sidebar/Left"
+import RightBar from "./sidebar/Right"
+import "./CarLayout.css"
 
 const CarLayout = () => {
-  return (
-    <div>
-      <Container>
-        <div className="backSplash">
-          {/* <Header /> */}
-          {/* <GasDisplay /> */}
-          <CarDisplay />
-          {/* <DriverView /> */}
-          {/* <WidgetContainer /> */}
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    window.addEventListener("resize", handleResize)
+
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+  if (isMobile) {
+    return (
+      <div className="car-layout">
+        <CarDisplay />
+        <div className="options-layout">
+          <LeftBar />
+          <RightBar />
         </div>
-        {/* <OptionsContainer /> */}
-      </Container>
-    </div>
-  )
+      </div>
+    )
+  } else {
+    return (
+      <div className="car-layout">
+        <LeftBar />
+        <CarDisplay />
+        <RightBar />
+      </div>
+    )
+  }
 }
 
 export default CarLayout

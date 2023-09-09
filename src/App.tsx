@@ -3,7 +3,7 @@ import CarLayout from "./components/CarLayout"
 
 const App = () => {
   return (
-    <div>
+    <div className="flex h-full w-full">
       <CarLayout />
     </div>
   )

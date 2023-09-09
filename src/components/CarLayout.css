@@ -1,0 +1,22 @@
+.car-layout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+/* =============================== MEDIA QUERIES =============================== */
+@media only screen and (max-width: 768px) {
+  .car-layout {
+    flex-direction: column;
+    justify-content: center;
+    overflow: scroll;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .options-layout {
+    display: flex;
+    flex-direction: row;
+  }
+}
