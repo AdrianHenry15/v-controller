@@ -3,23 +3,22 @@
 import React from "react"
 import Container from "./Container"
 import WidgetContainer from "./widgets/WidgetContainer"
-import Header from "./header/Header"
-import CarDisplay from "./car-display/CarDisplay"
+
 import OptionsContainer from "./options/OptionsContainer"
-import DriverView from "./car-display/DriverView"
+import CarDisplay from "./car-display/CarDisplay"
 
 const CarLayout = () => {
   return (
     <div>
       <Container>
         <div className="backSplash">
-          <Header />
+          {/* <Header /> */}
           {/* <GasDisplay /> */}
           <CarDisplay />
           {/* <DriverView /> */}
-          <WidgetContainer />
+          {/* <WidgetContainer /> */}
         </div>
-        <OptionsContainer />
+        {/* <OptionsContainer /> */}
       </Container>
     </div>
   )
