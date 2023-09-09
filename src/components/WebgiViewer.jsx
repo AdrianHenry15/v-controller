@@ -47,27 +47,27 @@ gsap.registerPlugin(ScrollTrigger);
 const WebgiViewer = forwardRef((props, ref) => {
     const canvasRef = useRef(null);
     // references to change position of camera
-    const [viewerRef, setViewerRef] = useState(null)
-    const [targetRef, setTargetRef] = useState(null)
-    const [cameraRef, setCameraRef] = useState(null)
-    const [positionRef, setPositionRef] = useState(null)
+    // const [viewerRef, setViewerRef] = useState(null)
+    // const [targetRef, setTargetRef] = useState(null)
+    // const [cameraRef, setCameraRef] = useState(null)
+    // const [positionRef, setPositionRef] = useState(null)
 
-    useImperativeHandle(ref, () => ({
-        triggerPreview() {
-            gsap.to(positionRef, {
-                x: 13.04,
-                y: -2.01,
-                z: 2.29,
-                duration: 2,
-                onUpdate: () => {
-                    viewerRef.setDirty()
-                    cameraRef.positionTargetUpdated(true)
-                }
-            });
+    // useImperativeHandle(ref, () => ({
+    //     triggerPreview() {
+    //         gsap.to(positionRef, {
+    //             x: 13.04,
+    //             y: -2.01,
+    //             z: 2.29,
+    //             duration: 2,
+    //             onUpdate: () => {
+    //                 viewerRef.setDirty()
+    //                 cameraRef.positionTargetUpdated(true)
+    //             }
+    //         });
 
-            gsap.to(targetRef, { x: 0.11, y: 0.0, z: 0.0, duration: 2 })
-        }
-    }))
+    //         gsap.to(targetRef, { x: 0.11, y: 0.0, z: 0.0, duration: 2 })
+    //     }
+    // }))
 
     // do not want re-render and recreate this animation function on every render
     // const memoizedclickAnimation = useCallback((position, target, onUpdate) => {
@@ -82,7 +82,7 @@ const WebgiViewer = forwardRef((props, ref) => {
             canvas: canvasRef.current
         })
 
-        setViewerRef(viewer)
+        // setViewerRef(viewer)
 
         // Add some plugins
         const manager = await viewer.addPlugin(AssetManagerPlugin)
@@ -91,14 +91,14 @@ const WebgiViewer = forwardRef((props, ref) => {
         await viewer.addPlugin(AssetManagerBasicPopupPlugin)
 
         // this could access position and target
-        const camera = viewer.scene.activeCamera;
+        // const camera = viewer.scene.activeCamera;
         // modifies and animates 3D model
-        const position = camera.position
-        const target = camera.target
+        // const position = camera.position
+        // const target = camera.target
 
-        setCameraRef(camera)
-        setPositionRef(position)
-        setTargetRef(target)
+        // setCameraRef(camera)
+        // setPositionRef(position)
+        // setTargetRef(target)
 
         // Add plugins individually.
         await viewer.addPlugin(GBufferPlugin)
@@ -128,14 +128,14 @@ const WebgiViewer = forwardRef((props, ref) => {
         viewer.renderer.refreshPipeline()
 
         // Import and add a GLB file.
-        await manager.addFromPath("bmw_model.glb")
+        await manager.addFromPath("bmw_m3_e30_1986.glb")
 
         // manipulating background of glb file which is 3D model
         viewer.getPlugin(TonemapPlugin).uiConfig.clipBackground = true
 
         // This disables the controls to rotate the 3D model
         // Remember to keep this on for the car application
-        viewer.scene.activeCamera.setCameraOptions({ controlsEnabled: false });
+        viewer.scene.activeCamera.setCameraOptions({ controlsEnabled: true });
 
         // makes sure the position of page is on the top
         window.scrollTo(0, 0);
@@ -152,7 +152,7 @@ const WebgiViewer = forwardRef((props, ref) => {
         // this event listener updates position of camera
         viewer.addEventListener("preFrame", () => {
             if (needsUpdate) {
-                camera.positionTargetUpdated(true)
+                // camera.positionTargetUpdated(true)
                 needsUpdate = false;
             }
         })
